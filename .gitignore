@@ -39,6 +39,7 @@ tmtagsHistory
 *.sublime-project
 *.sublime-workspace
 .bundle
+.mypy_cache
 
 # virtual environment  #
 ########################
