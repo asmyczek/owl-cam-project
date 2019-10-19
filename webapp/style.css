@@ -1,0 +1,81 @@
+body {
+    font-family: "Helvetica";
+}
+
+.header {
+    background-color: #333399;
+    padding: 10px 5px 10px 2px;
+    font-size: 1.2em;
+    color: white;
+}
+
+.status {
+    background-color: #AAAAFF;
+    padding: 5px;
+}
+
+.status div {
+    margin: 3px 0px;
+}
+
+.status span {
+    padding-left: 2px;
+    padding-right: 20px;
+}
+
+.body {
+    padding: 10px 5px 10px 2px;
+}
+
+.header-a {
+    border: 2px solid #8888RF;
+    color: #8888RF;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8em;
+    margin: 4px 6px;
+    cursor: pointer;
+}
+
+.button {
+    border: 2px solid #8888RF;
+    color: #8888RF;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-on {
+    background-color: #8888FF;
+    color: white;
+    border: 2px solid #8888RF;
+}
+
+.header-right {
+    position: relative;
+    display: inline-block;
+    float:right;
+    background-color: #AAAAFF;
+}
+
+.footer {
+    padding: 10px 5px 10px 2px;
+    font-size: 0.8em;
+    color: #555555;
+}
+
+.footer-right {
+    position: relative;
+    display: inline-block;
+    float:right;
+}
+
+.footer-hr {
+    height: 2px
+    color: #333399;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+</head>
+<body>
+<div class="header">
+    <img />
+    <span>Owl Cam - Logs</span>
+</div>
+<div class="body">
+    <div class="logs">
+        <code>
+            {% for log in logs %}
+            <div>
+                {{ log }}
+            </div>
+            {% endfor %}
+        </code>
+    </div>
+    <div class="footer">
+        <hr class="footer-hr" />
+        <span>{{ version }}</span>
+    </div>
+</div>
+</body>
+</html>
+
