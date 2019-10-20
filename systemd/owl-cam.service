@@ -1,0 +1,16 @@
+# Drop it ini /etc/systemd/system/multi-user.target.wants/
+[Unit]
+Description=Owl Cam
+After=multi-user.target
+
+[Service]
+Type=simple
+Environment=OWLCAM_ENV=prod
+Environment=OWLCAM_LOG_LEVEL=info
+Environment=OWLCAM_PATH={path_to_owl_cam_project}
+WorkingDirectory={path_to_owl_cam_project}
+ExecStart={path_to_owl_cam_project}/start_owl_cam.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
