@@ -2,5 +2,5 @@ CherryPy==18.3.0
 Jinja2==2.10.3
 mypy==0.730
 pytest-mypy==0.4.1
-gpiozero==1.5.5
-
+gpiozero==1.5.1
+RPi.GPIO==0.7.0
