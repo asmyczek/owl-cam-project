@@ -2,11 +2,13 @@
 import cherrypy
 from cherrypy.lib import auth_digest
 from jinja2 import Environment, FileSystemLoader
+from typing import Dict
+from subprocess import check_output
+import logging
+
 from owlcam.utils import CONFIG, APP_LOG_HANDLER, GLOBAL_LOG_HANDLER, Switch, get_project_path, in_production
 from owlcam.controller import Controller
 from owlcam.__init__ import __version__
-from typing import Dict
-import logging
 
 
 # Import pi module only if running on a Raspberry Pi,
@@ -15,11 +17,16 @@ if in_production():
     from owlcam.pi import cleanup_pi, pi_temperature
 else:
     def cleanup_pi() -> None:
-        logging.debug('Cleaning up PI config.')
+        logging.debug("Cleaning up PI config.")
 
     def pi_temperature() -> float:
         return 45.0
 
+
+def get_ip_address() -> str:
+    ip = check_output(["hostname", "-I"])
+    return ip.decode("utf-8").strip()
+        
 
 class App(object):
     """Application routing class
@@ -32,19 +39,22 @@ class App(object):
     @cherrypy.expose
     def index(self) -> str:
         template = self.__env.get_template("index.html")
-        return template.render(version=__version__)
+        return template.render(version=__version__,
+                               ip=get_ip_address())
 
     @cherrypy.expose
     def home(self) -> str:
         template = self.__env.get_template("home.html")
         return template.render(
             version=__version__,
-            temperature=pi_temperature())
+            ip=get_ip_address(),
+            temperature=int(pi_temperature()))
 
     @cherrypy.expose
     def logs(self) -> str:
         template = self.__env.get_template("logs.html")
-        return template.render(version=__version__, logs=APP_LOG_HANDLER.get_logs())
+        return template.render(version=__version__, 
+                               logs=APP_LOG_HANDLER.get_logs())
 
 
 @cherrypy.expose
